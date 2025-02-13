@@ -115,7 +115,7 @@ return [
     */
 
     'limiters' => [
-        'login' => 'auth.throttle',
+        'login' => 'login',
         'two-factor' => 'two-factor',
     ],
 
