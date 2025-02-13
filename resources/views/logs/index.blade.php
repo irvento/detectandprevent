@@ -5,7 +5,8 @@
         </h2>
     </x-slot>
 
-    <table class="table align-middle text-white m-4">
+    <div class=" ">
+    <table class="table align-middle text-white mx-300">
         <thead>
             <tr>
                 <th>Description</th>

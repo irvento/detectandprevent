@@ -17,5 +17,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::group(['middleware'=>'throttle: 5, 1'], function(){
+    Route::get('/admin/logs', [logsController::class, 'index'])->middleware('auth');
+});
 
-Route::get('/admin/logs', [logsController::class, 'index'])->middleware('auth');
