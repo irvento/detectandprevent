@@ -9,8 +9,8 @@ class logsModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'log'; // Ensure this matches your table name
-    protected $fillable = ['user_id', 'description']; // Mass assignable fields
+    protected $table = 'log';
+    protected $fillable = ['user_id', 'description', 'ip', 'device']; 
 
     public function user()
     {

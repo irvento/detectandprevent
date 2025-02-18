@@ -9,11 +9,10 @@ class logsController extends Controller
 {
     public function index(Request $request)
     {
-        $userIp = $request->ip();
-        $userDevice =  $request->header('User-Agent');
+        
 
         $logs = logsModel::all();
-        return view('logs.index', compact('logs', 'userIp', 'userDevice'));
+        return view('logs.index', compact('logs'));
     }
 
 
