@@ -1,13 +1,12 @@
 <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-
+<a href="{{route('logs')}}">VIEW LOGS</a>
     <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
         Welcome to detectnprevent!
     </h1>
 
     <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
         Detecttoprevent is my project in Information Assurance Security II, developed using the Laravel framework. It proactively mitigates common cyber threats, 
-        including Denial of Service (DoS) attacks, brute-force password attacks, phishing attempts, and SQL injection vulnerabilities. 
-        Leveraging Laravel's built-in security features—such as Cross-Site Request Forgery (CSRF) protection, input validation, and password hashing—Detecttoprevent enhances system resilience against these threats.
+        including Denial of Service (DoS) attacks, brute-force password attacks, and other. 
          This approach aligns with the National Institute of Standards and Technology (NIST) Cybersecurity Framework, emphasizing the 'Protect' and 'Detect' functions to manage cybersecurity risks effectively.
     </p>
 </div>

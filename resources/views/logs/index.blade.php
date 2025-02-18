@@ -1,26 +1,34 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight text-center bg-blue-600 p-4 rounded-lg shadow-lg">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
-    <div class=" ">
-    <table class="table align-middle text-white mx-300">
-        <thead>
-            <tr>
-                <th>Description</th>
-                <th>Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($logs as $log)
-            <tr>
-                <td>{{ $log->Description }}</td>
-                <td>{{ $log->created_at }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
+    <div class="p-6 bg-gray-900 rounded-lg shadow-lg">
+
+        <p>Your IP: {{ $userIp }}</p>
+    <p>Your Device: {{ $userDevice }}</p>
+        <table class="w-full border-collapse border border-gray-700">
+            <colgroup>
+                <col style="width: 20%;">
+            </colgroup>
+
+            <thead class="bg-blue-700 text-white">
+                <tr>
+                    <th class="p-3 text-left border border-gray-600">Description</th>
+                    <th class="p-3 text-left border border-gray-600">Time</th>
+                </tr>
+            </thead>
+
+            <tbody class="text-gray-300">
+                @foreach($logs as $log)
+                <tr class="hover:bg-blue-800 transition">
+                    <td class="p-3 border border-gray-600">{{ $log->Description }}</td>
+                    <td class="p-3 border border-gray-600">{{ $log->created_at }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </x-app-layout>
