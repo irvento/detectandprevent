@@ -1,5 +1,7 @@
 <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
+@if(auth()->user()->role == 'admin')
 <a href="{{route('logs')}}" class="mt-6 text-gray-500 light:text-gray-400 leading-relaxed bg-white border-r-2">VIEW LOGS</a>
+@endif
     <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
         Welcome to detectnprevent!
     </h1>
