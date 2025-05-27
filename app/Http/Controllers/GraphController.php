@@ -40,7 +40,7 @@
            $failedAttemptsRecords = DB::table('log')
                ->where('Description', 'like', '%Failed login attempt%')
                ->orderBy('created_at', 'desc')
-               ->get();
+               ->paginate(10);
            return view('graphs', compact(
                'trafficLabels',
                'trafficData',

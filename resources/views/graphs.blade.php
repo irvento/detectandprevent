@@ -1,4 +1,3 @@
-
 <x-app-layout>
     @php
         // Provide default values if not passed from the controller.
@@ -31,6 +30,9 @@
                         Failed Attempts Details
                     </h2>
                     <x-failed-attempts-table :failedAttemptsRecords="$failedAttemptsRecords" />
+                    <div class="mt-4 flex justify-center">
+                        {{ $failedAttemptsRecords->links('pagination::tailwind') }}
+                    </div>
                 </div>
             </div>
         </div>
