@@ -40,7 +40,7 @@
         </div>
 
         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Laravel’s Eloquent ORM uses prepared statements and parameter binding, which automatically sanitizes inputs, preventing malicious SQL injection attacks. This ensures that user-provided data cannot manipulate database queries.        </p>
+            Laravel's Eloquent ORM uses prepared statements and parameter binding, which automatically sanitizes inputs, preventing malicious SQL injection attacks. This ensures that user-provided data cannot manipulate database queries.        </p>
 
        
     </div>
@@ -56,7 +56,7 @@
         </div>
 
         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Laravel’s built-in authentication system includes throttle protection, restricting repeated login attempts. After multiple failed attempts, the system temporarily blocks further access, making brute-force attacks ineffective.        </p>
+            Laravel's built-in authentication system includes throttle protection, restricting repeated login attempts. After multiple failed attempts, the system temporarily blocks further access, making brute-force attacks ineffective.        </p>
     </div>
 
     <div>
@@ -72,5 +72,62 @@
         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
             Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started with what matters most: building your application.
         </p>
+    </div>
+</div>
+
+<div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 p-6 lg:p-8">
+    <div class="flex items-center mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-6 stroke-gray-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+        </svg>
+        <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
+            Guidelines & Help
+        </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">System Usage Guidelines</h3>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Monitor the traffic graphs regularly to identify unusual patterns
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Review failed login attempts table for potential security threats
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Keep your login credentials secure and never share them
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Log out when leaving the system unattended
+                </li>
+            </ul>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Security Tips</h3>
+            <ul class="space-y-3 text-gray-600 dark:text-gray-300">
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Use strong, unique passwords for all accounts
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Enable two-factor authentication when available
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Report any suspicious activities immediately
+                </li>
+                <li class="flex items-start">
+                    <span class="text-green-500 mr-2">✓</span>
+                    Keep your system and browsers up to date
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

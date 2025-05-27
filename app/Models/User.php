@@ -29,6 +29,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'role',
+        'is_suspended',
+        'suspended_until',
     ];
 
     /**
@@ -57,11 +60,10 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'is_suspended' => 'boolean',
+        'suspended_until' => 'datetime',
+    ];
 }
