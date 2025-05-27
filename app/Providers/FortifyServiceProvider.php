@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use App\Models\Incident;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -55,6 +56,14 @@ class FortifyServiceProvider extends ServiceProvider
                         'user_id' => $user->id,
                         'Description' => 'User exceeded login attempts, CHANGE PASSWORD NOW! Someone might be trying to access your account',                                  
                     ]);
+
+                    Incident::create([
+                        'type' => 'login_attempt',
+                        'description' => 'User exceeded login attempts, CHANGE PASSWORD NOW! Someone might be trying to access your account',
+                        'user_id' => $user->id,
+                        'ip' => $userIp,
+                        'status' => 'dangerous',]
+                );
                 }
             }
     
