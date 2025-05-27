@@ -72,10 +72,10 @@
                     <p class="text-center text-gray-600">No commit logs available.</p>
                 @endif
 <br><br><br><br>
-<div class="p-6 bg-gray-900 rounded-lg shadow-lg mb-8">
-        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight text-center bg-green-600 p-4 rounded-lg shadow-lg mb-4">
-    {{ __('Incident Logs') }}
-</h2>
+                <div class="p-6 bg-gray-900 rounded-lg shadow-lg mb-8">
+                        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight text-center bg-green-600 p-4 rounded-lg shadow-lg mb-4">
+                    {{ __('Incident Logs') }}
+                </h2>
         <table class="w-full border-collapse border border-gray-700 mb-8">
             <thead class="bg-yellow-700 text-white">
                 <tr>
