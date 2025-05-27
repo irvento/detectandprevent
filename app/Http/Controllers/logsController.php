@@ -1,23 +1,29 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Models\logsModel;
 use Illuminate\Http\Request;
 use App\Models\ErrorLog;
+use Illuminate\Support\Facades\Http;
 
 class logsController extends Controller
 {
     public function index(Request $request)
     {
-        
+        $logs = logsModel::where('device', '!=', 'git')->get();
+        $errorLogs = ErrorLog::orderBy('created_at', 'desc')->get();
 
-        $logs = logsModel::all();
-        $errorLogs = ErrorLog::all();
-        return view('logs.index', compact('logs','errorLogs'));
+        // Fetch commits from GitHub API
+        $commitLogs = [];
+        $response = Http::get('https://api.github.com/repos/irvento/detectandprevent/commits?sha=main');
+        if ($response->ok()) {
+            $commitLogs = $response->json();
+        }
+
+        return view('logs.index', compact('logs', 'commitLogs', 'errorLogs'));
     }
-
-    
 
     private function getBrowser($userAgent)
     {
