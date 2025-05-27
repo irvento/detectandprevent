@@ -15,11 +15,6 @@ class logsController extends Controller
         return view('logs.index', compact('logs'));
     }
 
-
-    
-
-
-
     private function getBrowser($userAgent)
     {
         // Basic browser detection

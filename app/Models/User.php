@@ -2,23 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Auth0\Laravel\Contract\Auth\User\Repository;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements Repository
 {
-    use HasApiTokens;
-
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory;
-    use HasProfilePhoto;
     use Notifiable;
-    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -39,17 +30,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
-    ];
-
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
     ];
 
     /**
@@ -57,11 +37,70 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    public function getAuthIdentifier()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->id;
+    }
+
+    public function getAuthIdentifierName()
+    {
+        return 'id';
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'remember_token';
+    }
+
+    public function getAuth0Id()
+    {
+        return $this->auth0_id;
+    }
+
+    public function setAuth0Id($id)
+    {
+        $this->auth0_id = $id;
+    }
+
+    public function getAuth0UserInfo()
+    {
+        return $this->auth0_user_info;
+    }
+
+    public function setAuth0UserInfo($userInfo)
+    {
+        $this->auth0_user_info = $userInfo;
+    }
+
+    public function fromSession(array $user): ?AuthenticatableContract
+    {
+        $user = $this->find($user['id']);
+        return $user ?: null;
+    }
+
+    public function fromAccessToken(array $user): ?AuthenticatableContract
+    {
+        $user = $this->find($user['id']);
+        return $user ?: null;
     }
 }
