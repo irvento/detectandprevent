@@ -30,6 +30,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $logs->links('pagination::tailwind') }}
+        </div>
         <br><br>
 
     
@@ -60,6 +63,7 @@
         @endforeach
     </tbody>
 </table>
+{{ $commitLogs instanceof \Illuminate\Pagination\LengthAwarePaginator ? $commitLogs->links('pagination::tailwind') : '' }}
 <br><br><br><br>
 <div class="p-6 bg-gray-900 rounded-lg shadow-lg mb-8">
         <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight text-center bg-green-600 p-4 rounded-lg shadow-lg mb-4">
@@ -89,6 +93,9 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $incidents->links('pagination::tailwind') }}
+        </div>
     </div>
     <br><br>
         <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight text-center bg-red-600 p-4 rounded-lg shadow-lg mb-4">
@@ -114,5 +121,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4">
+            {{ $errorLogs->links('pagination::tailwind') }}
+        </div>
     </div>
 </x-app-layout>

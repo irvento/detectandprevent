@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use App\Models\logsModel;
@@ -13,18 +12,29 @@ class logsController extends Controller
 {
     public function index(Request $request)
     {
-    $logs = logsModel::where('device', '!=', 'git')->get();
-    $errorLogs = ErrorLog::orderBy('created_at', 'desc')->get();
-    $incidents = Incident::orderBy('created_at', 'desc')->get();
+        $perPage = 10; // Number of items per page
 
-    // Fetch commits from GitHub API
-    $commitLogs = [];
-    $response = \Illuminate\Support\Facades\Http::get('https://api.github.com/repos/irvento/detectandprevent/commits?sha=main');
-    if ($response->ok()) {
-        $commitLogs = $response->json();
-    }
+        $logs = logsModel::where('device', '!=', 'git')
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage)
+            ->withQueryString();
 
-    return view('logs.index', compact('logs', 'commitLogs', 'errorLogs', 'incidents'));
+        $errorLogs = ErrorLog::orderBy('created_at', 'desc')
+            ->paginate($perPage)
+            ->withQueryString();
+
+        $incidents = Incident::orderBy('created_at', 'desc')
+            ->paginate($perPage)
+            ->withQueryString();
+
+        // Fetch commits from GitHub API
+        $commitLogs = [];
+        $response = \Illuminate\Support\Facades\Http::get('https://api.github.com/repos/irvento/detectandprevent/commits?sha=main');
+        if ($response->ok()) {
+            $commitLogs = $response->json();
+        }
+
+        return view('logs.index', compact('logs', 'commitLogs', 'errorLogs', 'incidents'));
     }
 
     private function getBrowser($userAgent)

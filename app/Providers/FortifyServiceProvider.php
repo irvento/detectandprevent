@@ -53,7 +53,7 @@ class FortifyServiceProvider extends ServiceProvider
                         'ip' => $userIp,
                         'device' => $userDevice,
                         'user_id' => $user->id,
-                        'Description' => 'User exceeded login attempts, CHANGE PASSWORD NOW! Someone might be trying to hack your account',                                  
+                        'Description' => 'User exceeded login attempts, CHANGE PASSWORD NOW! Someone might be trying to access your account',                                  
                     ]);
                 }
             }
