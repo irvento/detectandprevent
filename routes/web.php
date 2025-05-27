@@ -6,6 +6,7 @@ use App\Http\Controllers\ErrorLogController;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GraphController;
+use App\Http\Controllers\ReportsController;
 
 Route::group(['middleware' => 'throttle: 5, .1'], function () {
     Route::get('/', function () {
@@ -20,6 +21,7 @@ Route::group(['middleware' => 'throttle: 5, .1'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     });
 
+    Route::get('/report', [ReportsController::class, 'index'])->name('report');
     Route::get('/graphs', [GraphController::class, 'index'])->name('graphs');
     Route::get('/admin/logs', [logsController::class, 'index'])->name('logs')->middleware('auth');
     Route::get('/admin/error-logs', [ErrorLogController::class, 'index'])->name('error-logs.index');
