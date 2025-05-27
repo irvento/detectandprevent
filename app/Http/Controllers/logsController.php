@@ -7,22 +7,24 @@ use App\Models\logsModel;
 use Illuminate\Http\Request;
 use App\Models\ErrorLog;
 use Illuminate\Support\Facades\Http;
+use App\Models\Incident;
 
 class logsController extends Controller
 {
     public function index(Request $request)
     {
-        $logs = logsModel::where('device', '!=', 'git')->get();
-        $errorLogs = ErrorLog::orderBy('created_at', 'desc')->get();
+    $logs = logsModel::where('device', '!=', 'git')->get();
+    $errorLogs = ErrorLog::orderBy('created_at', 'desc')->get();
+    $incidents = Incident::orderBy('created_at', 'desc')->get();
 
-        // Fetch commits from GitHub API
-        $commitLogs = [];
-        $response = Http::get('https://api.github.com/repos/irvento/detectandprevent/commits?sha=deployment');
-        if ($response->ok()) {
-            $commitLogs = $response->json();
-        }
+    // Fetch commits from GitHub API
+    $commitLogs = [];
+    $response = \Illuminate\Support\Facades\Http::get('https://api.github.com/repos/irvento/detectandprevent/commits?sha=main');
+    if ($response->ok()) {
+        $commitLogs = $response->json();
+    }
 
-        return view('logs.index', compact('logs', 'commitLogs', 'errorLogs'));
+    return view('logs.index', compact('logs', 'commitLogs', 'errorLogs', 'incidents'));
     }
 
     private function getBrowser($userAgent)

@@ -7,6 +7,9 @@
     </x-slot>
 
     <div class="p-6 bg-gray-900 rounded-lg shadow-lg mb-8">
+        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight text-center bg-green-600 p-4 rounded-lg shadow-lg mb-4">
+    {{ __('Login/Logout Logs') }}
+</h2>
         <table class="w-full border-collapse border border-gray-700 mb-8">
             <thead class="bg-blue-700 text-white">
                 <tr>
@@ -27,6 +30,9 @@
                 @endforeach
             </tbody>
         </table>
+        <br><br>
+
+    
         <br><br>
 {{-- Commit Logs Table --}}
 <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight text-center bg-green-600 p-4 rounded-lg shadow-lg mb-4">
@@ -55,6 +61,36 @@
     </tbody>
 </table>
 <br><br><br><br>
+<div class="p-6 bg-gray-900 rounded-lg shadow-lg mb-8">
+        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight text-center bg-green-600 p-4 rounded-lg shadow-lg mb-4">
+    {{ __('Incident Logs') }}
+</h2>
+        <table class="w-full border-collapse border border-gray-700 mb-8">
+            <thead class="bg-yellow-700 text-white">
+                <tr>
+                    <th class="p-3 text-left border border-gray-600">Type</th>
+                    <th class="p-3 text-left border border-gray-600">Description</th>
+                    <th class="p-3 text-left border border-gray-600">User</th>
+                    <th class="p-3 text-left border border-gray-600">IP</th>
+                    <th class="p-3 text-left border border-gray-600">Status</th>
+                    <th class="p-3 text-left border border-gray-600">Date</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-300">
+                @foreach($incidents as $incident)
+                <tr>
+                    <td class="p-3 border border-gray-600">{{ $incident->type }}</td>
+                    <td class="p-3 border border-gray-600">{{ $incident->description }}</td>
+                    <td class="p-3 border border-gray-600">{{ $incident->user_id }}</td>
+                    <td class="p-3 border border-gray-600">{{ $incident->ip }}</td>
+                    <td class="p-3 border border-gray-600">{{ $incident->status }}</td>
+                    <td class="p-3 border border-gray-600">{{ $incident->created_at }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <br><br>
         <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight text-center bg-red-600 p-4 rounded-lg shadow-lg mb-4">
             {{ __('Error Logs') }}
         </h2>
