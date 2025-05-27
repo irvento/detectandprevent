@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\logsModel;
 use Illuminate\Http\Request;
+use App\Models\ErrorLog;
 
 class logsController extends Controller
 {
@@ -12,10 +13,11 @@ class logsController extends Controller
         
 
         $logs = logsModel::all();
-        return view('logs.index', compact('logs'));
+        $errorLogs = ErrorLog::all();
+        return view('logs.index', compact('logs','errorLogs'));
     }
 
-
+    
 
     private function getBrowser($userAgent)
     {
