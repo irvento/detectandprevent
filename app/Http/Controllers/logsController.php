@@ -17,7 +17,7 @@ class logsController extends Controller
 
         // Fetch commits from GitHub API
         $commitLogs = [];
-        $response = Http::get('https://api.github.com/repos/irvento/detectandprevent/commits?sha=main');
+        $response = Http::get('https://api.github.com/repos/irvento/detectandprevent/commits?sha=deployment');
         if ($response->ok()) {
             $commitLogs = $response->json();
         }
