@@ -1,28 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Helpers;
 
-use App\Models\logsModel;
-use Illuminate\Http\Request;
-
-class logsController extends Controller
+class BrowserHelper
 {
-    public function index(Request $request)
+    public static function getBrowser($userAgent)
     {
-        
-
-        $logs = logsModel::all();
-        return view('logs.index', compact('logs'));
-    }
-
-
-    
-
-
-
-    private function getBrowser($userAgent)
-    {
-        // Basic browser detection
         if (strpos($userAgent, 'Chrome') !== false) {
             return 'Chrome';
         } elseif (strpos($userAgent, 'Firefox') !== false) {
