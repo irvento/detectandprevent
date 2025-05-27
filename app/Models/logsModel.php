@@ -10,7 +10,7 @@ class logsModel extends Model
     use HasFactory;
 
     protected $table = 'log';
-    protected $fillable = ['user_id', 'description', 'ip', 'device']; 
+    protected $fillable = ['user_id', 'Description', 'ip', 'device'];
 
     public function user()
     {
