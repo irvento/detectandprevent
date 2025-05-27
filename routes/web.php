@@ -3,7 +3,7 @@
 use App\Http\Controllers\logsController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => 'throttle: 5, .1'], function () {
+Route::group(['middleware' => 'throttle: 5, 1'], function () {
 
     Route::get('/', function () {
         return view('welcome');
