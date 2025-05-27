@@ -25,6 +25,7 @@
                         <x-nav-link href="{{ route('report') }}" :active="request()->routeIs('report')">
                             {{ __('Report') }}
                         </x-nav-link>
+                        
                     @endif
                 </div>
             </div>

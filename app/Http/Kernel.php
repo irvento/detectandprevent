@@ -7,14 +7,10 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
-    protected $middlewareGroups = [
-        'web' => [
-         
-            \App\Http\Middleware\LogUnauthorizedDashboardAccess::class,
-        ],
-
-        'api' => [
-            
-        ],
-    ];
+protected $middlewareGroups = [
+    'web' => [
+        // other middleware...
+        \App\Http\Middleware\DetectFlood::class,
+    ],
+];  
 }
