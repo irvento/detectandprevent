@@ -4,6 +4,7 @@ use App\Http\Controllers\logsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ErrorLogController;
 use App\Http\Controllers\IncidentController;
+use App\Http\Controllers\DashboardController;
 
 Route::group(['middleware' => 'throttle: 5, .1'], function () {
 
@@ -28,5 +29,6 @@ Route::group(['middleware' => 'throttle: 5, .1'], function () {
     Route::get('/admin/logs', [logsController::class, 'index'])->name('logs')->middleware('auth');
     Route::get('/admin/error-logs', [ErrorLogController::class, 'index'])->name('error-logs.index');
     Route::get('/admin/incidents', [IncidentController::class, 'index'])->middleware('auth');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
